@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - Convert Celsius, Fahrenheit & Kelvin</title>
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="converter-style.css">
+</head>
+<body>
+    <!-- Main container for the application -->
+    <div class="container">
+        <!-- Header section -->
+        <header class="header">
+            <h1>🌡️ Temperature Converter</h1>
+            <p class="subtitle">Convert between Celsius, Fahrenheit, and Kelvin instantly</p>
+        </header>
+
+        <!-- Main converter section -->
+        <section class="converter-section">
+            <!-- Input card -->
+            <div class="card">
+                <h2>Enter Temperature</h2>
+                
+                <!-- Temperature input field -->
+                <div class="input-group">
+                    <label for="temperature-input">Temperature Value:</label>
+                    <input 
+                        type="number" 
+                        id="temperature-input" 
+                        placeholder="Enter a number (e.g., 25)" 
+                        step="0.01"
+                    >
+                </div>
+
+                <!-- Unit selection using radio buttons -->
+                <div class="unit-selection">
+                    <label>Select Input Unit:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="input-unit" 
+                                value="celsius" 
+                                checked
+                            >
+                            <span>Celsius (°C)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="input-unit" 
+                                value="fahrenheit"
+                            >
+                            <span>Fahrenheit (°F)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="input-unit" 
+                                value="kelvin"
+                            >
+                            <span>Kelvin (K)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Output unit selection using radio buttons -->
+                <div class="unit-selection">
+                    <label>Convert To:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="output-unit" 
+                                value="celsius"
+                            >
+                            <span>Celsius (°C)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="output-unit" 
+                                value="fahrenheit" 
+                                checked
+                            >
+                            <span>Fahrenheit (°F)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input 
+                                type="radio" 
+                                name="output-unit" 
+                                value="kelvin"
+                            >
+                            <span>Kelvin (K)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Convert button -->
+                <button id="convert-btn" class="convert-button">Convert Temperature</button>
+
+                <!-- Error message display area -->
+                <div id="error-message" class="error-message"></div>
+            </div>
+
+            <!-- Result card -->
+            <div class="card result-card">
+                <h2>Conversion Result</h2>
+                
+                <!-- Input display -->
+                <div class="result-display">
+                    <div class="result-item input-result">
+                        <span class="result-label">Input:</span>
+                        <span id="input-display" class="result-value">-</span>
+                    </div>
+                </div>
+
+                <!-- Arrow indicator -->
+                <div class="arrow">↓</div>
+
+                <!-- Output display -->
+                <div class="result-display">
+                    <div class="result-item output-result">
+                        <span class="result-label">Output:</span>
+                        <span id="output-display" class="result-value">-</span>
+                    </div>
+                </div>
+
+                <!-- Success message display -->
+                <div id="success-message" class="success-message"></div>
+            </div>
+        </section>
+
+        <!-- Information section explaining the conversion logic -->
+        <section class="info-section">
+            <h2>How Temperature Conversion Works</h2>
+            
+            <div class="info-grid">
+                <!-- Celsius to Fahrenheit -->
+                <div class="info-card">
+                    <h3>Celsius ↔ Fahrenheit</h3>
+                    <p class="formula">°F = (°C × 9/5) + 32</p>
+                    <p class="formula">°C = (°F - 32) × 5/9</p>
+                    <p class="description">
+                        The most common conversion. Water freezes at 0°C (32°F) and boils at 100°C (212°F).
+                    </p>
+                </div>
+
+                <!-- Celsius to Kelvin -->
+                <div class="info-card">
+                    <h3>Celsius ↔ Kelvin</h3>
+                    <p class="formula">K = °C + 273.15</p>
+                    <p class="formula">°C = K - 273.15</p>
+                    <p class="description">
+                        Kelvin is the absolute temperature scale used in science. 0K is absolute zero, the lowest possible temperature.
+                    </p>
+                </div>
+
+                <!-- Fahrenheit to Kelvin -->
+                <div class="info-card">
+                    <h3>Fahrenheit ↔ Kelvin</h3>
+                    <p class="formula">K = (°F - 32) × 5/9 + 273.15</p>
+                    <p class="formula">°F = (K - 273.15) × 9/5 + 32</p>
+                    <p class="description">
+                        Combined conversion using Celsius as an intermediate step.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reference temperature table -->
+        <section class="reference-section">
+            <h2>Quick Reference: Common Temperatures</h2>
+            
+            <div class="table-container">
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Celsius (°C)</th>
+                            <th>Fahrenheit (°F)</th>
+                            <th>Kelvin (K)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Absolute Zero</td>
+                            <td>-273.15</td>
+                            <td>-459.67</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Water Freezes</td>
+                            <td>0</td>
+                            <td>32</td>
+                            <td>273.15</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Room Temperature</td>
+                            <td>20</td>
+                            <td>68</td>
+                            <td>293.15</td>
+                        </tr>
+                        <tr>
+                            <td>Body Temperature</td>
+                            <td>37</td>
+                            <td>98.6</td>
+                            <td>310.15</td>
+                        </tr>
+                        <tr>
+                            <td>Water Boils</td>
+                            <td>100</td>
+                            <td>212</td>
+                            <td>373.15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer">
+        <p>&copy; 2026 Temperature Converter. Built with HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="converter-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+/* ========================================
+   GLOBAL STYLES & RESET
+   ======================================== */
+
+/* Reset default browser margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define root color variables for consistency and easy theming */
+:root {
+    /* Primary colors */
+    --primary-color: #3b82f6;        /* Blue - main accent */
+    --secondary-color: #f59e0b;      /* Amber - secondary accent */
+    --success-color: #10b981;        /* Green - success messages */
+    --error-color: #ef4444;          /* Red - error messages */
+    --dark-bg: #0f172a;              /* Dark blue - backgrounds */
+    --light-bg: #f8fafc;             /* Light gray - alternating sections */
+    --text-dark: #1e293b;            /* Dark text */
+    --text-light: #64748b;           /* Light gray text */
+    --white: #ffffff;                /* White */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    --shadow-hover: 0 15px 40px rgba(59, 130, 246, 0.2);  /* Hover shadow */
+}
+
+/* Base typography and layout */
+html {
+    scroll-behavior: smooth;         /* Smooth scrolling for navigation */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--light-bg), #e0e7ff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main container - max-width wrapper with centering */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    animation: slideDown 0.6s ease;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Slide down animation for header */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   CONVERTER SECTION - Main Application
+   ======================================== */
+
+.converter-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Card styling - reusable component */
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   INPUT GROUP STYLES
+   ======================================== */
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* Temperature input field */
+#temperature-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--text-dark);
+}
+
+#temperature-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: #f0f4ff;
+}
+
+/* Input placeholder styling */
+#temperature-input::placeholder {
+    color: #cbd5e1;
+}
+
+/* ========================================
+   UNIT SELECTION STYLES
+   ======================================== */
+
+.unit-selection {
+    margin-bottom: 1.5rem;
+}
+
+.unit-selection label:first-of-type {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* Radio button group container */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Radio button label styling */
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.radio-label:hover {
+    background-color: var(--light-bg);
+    border-color: var(--primary-color);
+}
+
+/* Radio button input styling */
+.radio-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.8rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.radio-label span {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+.convert-button {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.convert-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.convert-button:active {
+    transform: translateY(0);
+}
+
+.convert-button:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   ERROR & SUCCESS MESSAGES
+   ======================================== */
+
+.error-message {
+    display: none;
+    margin-top: 1rem;
+    padding: 12px 15px;
+    background-color: #fee2e2;
+    border-left: 4px solid var(--error-color);
+    color: #991b1b;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.success-message {
+    display: none;
+    padding: 12px 15px;
+    background-color: #d1fae5;
+    border-left: 4px solid var(--success-color);
+    color: #065f46;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease;
+}
+
+.success-message.show {
+    display: block;
+}
+
+/* Slide in animation for messages */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESULT CARD STYLES
+   ======================================== */
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-display {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: var(--light-bg);
+    transition: all 0.3s ease;
+}
+
+.input-result {
+    border: 2px solid #cbd5e1;
+}
+
+.output-result {
+    border: 2px solid var(--success-color);
+    background-color: #f0fdf4;
+}
+
+.result-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    word-break: break-word;
+}
+
+.output-result .result-value {
+    color: var(--success-color);
+}
+
+/* Arrow indicator between results */
+.arrow {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    animation: bounce 1.5s infinite;
+}
+
+/* Bounce animation for arrow */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ========================================
+   INFORMATION SECTION
+   ======================================== */
+
+.info-section {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+}
+
+.info-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+/* Information cards grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.info-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Formula styling */
+.formula {
+    background-color: var(--white);
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin: 0.8rem 0;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    text-align: center;
+    border: 1px solid #fce7f3;
+}
+
+.description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ========================================
+   REFERENCE TABLE SECTION
+   ======================================== */
+
+.reference-section {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+}
+
+.reference-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Table styling */
+.reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.reference-table thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.reference-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+}
+
+.reference-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.reference-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.reference-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+/* Highlight row - room temperature */
+.highlight-row {
+    background-color: #fef3c7;
+    font-weight: 600;
+}
+
+.highlight-row:hover {
+    background-color: #fde68a;
+}
+
+/* ========================================
+   FOOTER SECTION
+   ======================================== */
+
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+}
+
+.footer p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLET (768px and below)
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    /* Convert section - single column on tablet */
+    .converter-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Card padding reduction */
+    .card {
+        padding: 1.5rem;
+    }
+
+    .info-section,
+    .reference-section {
+        padding: 1.5rem;
+    }
+
+    /* Result value size reduction */
+    .result-value {
+        font-size: 1.5rem;
+    }
+
+    /* Information grid - 2 columns */
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Radio group - still vertical */
+    .radio-group {
+        gap: 0.6rem;
+    }
+
+    .radio-label {
+        padding: 0.6rem;
+    }
+
+    /* Container padding */
+    .container {
+        padding: 15px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE (480px and below)
+   ======================================== */
+
+@media (max-width: 480px) {
+    /* Header adjustments */
+    .header {
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Card adjustments */
+    .card {
+        padding: 1rem;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Input and button */
+    #temperature-input {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .convert-button {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* Unit selection adjustments */
+    .unit-selection label:first-of-type {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .radio-label {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .radio-label input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.6rem;
+    }
+
+    /* Result display */
+    .result-item {
+        padding: 1rem;
+    }
+
+    .result-value {
+        font-size: 1.3rem;
+    }
+
+    .result-label {
+        font-size: 0.75rem;
+    }
+
+    .arrow {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+    }
+
+    /* Information section */
+    .info-section,
+    .reference-section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-section h2,
+    .reference-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-card {
+        padding: 1rem;
+    }
+
+    .info-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .formula {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+        margin: 0.6rem 0;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    /* Table - reduced font */
+    .reference-table {
+        font-size: 0.8rem;
+    }
+
+    .reference-table th,
+    .reference-table td {
+        padding: 0.6rem;
+    }
+
+    /* Error/Success messages */
+    .error-message,
+    .success-message {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 1.5rem;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+
+    /* Container padding */
+    .container {
+        padding: 10px;
+    }
+}
