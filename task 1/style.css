@@ -147,6 +147,7 @@ p {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    color: #7dd3fc;                  /* Light cyan color */
     animation: fadeInDown 0.8s ease;  /* Fade-in animation */
 }
 
@@ -154,7 +155,7 @@ p {
 .hero-subheading {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #cbd5e1;                  /* Lighter text color */
+    color: #ffffff;                  /* White text for better visibility */
     animation: fadeInUp 0.8s ease;
 }
 
@@ -410,7 +411,7 @@ p {
 
 .cta-content p {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     margin-bottom: 2rem;
 }
 
@@ -534,7 +535,7 @@ p {
 }
 
 .footer-section p {
-    color: #cbd5e1;
+    color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.6;
 }
@@ -574,13 +575,13 @@ p {
 
 .footer-links li {
     margin-bottom: 0.8rem;
-    color: #cbd5e1;
+    color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.6;
 }
 
 .footer-links a {
-    color: #cbd5e1;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -595,7 +596,7 @@ p {
 .footer-bottom {
     text-align: center;
     padding-top: 1rem;
-    color: #64748b;
+    color: #cbd5e1;
     font-size: 0.9rem;
 }
 
